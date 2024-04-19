@@ -1,0 +1,224 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        
+*{
+	padding: 0px;
+    margin: 0px;
+    font-family: 'Kanit', sans-serif;
+	
+}
+
+body {
+    background-image: url("{% static 'logos/plus.png' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+	/* display: flex; */
+	
+	font-family: 'Montserrat', sans-serif;
+}
+{% comment %} /* ------------------------------------------------------------------------------- */ {% endcomment %}
+
+#sitename{
+    font-size: large;
+    font-weight: 600;  
+    letter-spacing: 2px;
+}
+#sitename:hover{
+    font-size: large;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+{% comment %} /* ------------------------------------------------------------------------------- */ {% endcomment %}
+
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+#h1{
+    margin: 10px;
+    margin-bottom: 5px;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span{
+	font-size: 12px;
+}
+
+a{
+	color: black;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+#submit {
+    width: 100px;
+	border-radius: 20px;
+	border: 1px solid rgb(0,101,170);
+	background-color: rgb(0,101,170);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+    cursor: pointer;
+}
+
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+button:hover{
+	border: 2px solid rgb(0,101,170);
+}
+
+.header{
+    box-shadow: 2px 2px 10px rgb(54, 54, 54);
+
+}
+.container-fluid a{
+    color:black;
+}
+.container-fluid #special
+{
+	height:35px;
+	display: flex;
+    width:80px;
+    margin-right: 5px;
+}
+.dricon img{
+    margin-bottom: 10px;
+
+}
+.dricon{
+    background-color:black;
+}
+.container-fluid a:hover{
+    color:blue;
+}
+
+    </style>
+    
+</head>
+<body >
+  <div class="background">
+    
+      <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a id="special" href={%url 'minor-home'%}> <img src="{% static 'logos/new (1).png' %}" id="logo" alt=""> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" id="sitename" href={%url 'minor-home'%}>HealthInsight360</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <form  method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-info">Logout</button>
+                        </form>
+                    </li>
+                {% endif %}
+            </ul>
+            
+            </div>
+          </div>
+        </nav>
+        
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form action="{% url 'profile' user=user %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="name" class="text-left mt-3">Name</label>
+                            {% comment %} <label for="gender">Gender</label> {% endcomment %}
+                        <input type="text" name="name" id="name" placeholder="Full Name" class="form-control my-2" value="{{ userdata.name }}">
+        
+                        <label for="email" class="text-left">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Email"  class="form-control my-2" value="{{ userdata.email }}">
+        
+                        <label for="phone" class="text-left">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" placeholder="Phone Number"  class="form-control my-2" value="{{ userdata.phone }}">
+        
+                        <label for="age" class="text-left">Age</label>
+                        <input type="number" name="age" id="age" placeholder="Age"  class="form-control my-2" value="{{ userdata.age }}">
+        
+                        {% comment %} <div class="form-group text-left"> {% endcomment %}
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="gender" class="form-control my-2">
+                                <option {% if userdata.gender == 'Male' %} selected {% endif %}>Male</option>
+                                <option {% if userdata.gender == 'Female' %} selected {% endif %}>Female</option>
+                                <option {% if userdata.gender == 'Transgender' %} selected {% endif %}>Transgender</option>
+                            </select>
+        
+                            <label for="blood">Blood Group</label>
+                            <select name="blood" id="blood" class="form-control my-2">
+                                <option value="{{ userdata.blood }}" selected>{{ userdata.blood }}</option>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="AB+">AB+</option>
+                                <option value="O+">O+</option>
+                                <option value="A-">A-</option>
+                                <option value="B-">B-</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        {% comment %} </div> {% endcomment %}
+        
+                        <label for="address" class="text-left">Address</label>
+                        <textarea class="form-control my-2" name="address" id="address" placeholder="Address">{{ userdata.address }}</textarea>
+        
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            
+        </div>
+        
+    </div>
+       
+</body>
+</html>

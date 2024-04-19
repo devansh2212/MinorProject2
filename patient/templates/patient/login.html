@@ -1,0 +1,29 @@
+{% extends "patient/base.html" %}
+{% load crispy_forms_tags %}
+{%load static%}
+{% block content %}
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form method="POST" action={% url 'p-login'%}>
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login Here!!</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" style="margin-top:5px">Login</button>
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Don't Have An Account?<a class="ml-3" href={%url 'pat-register'%}>Click Here!</a>
+                </small>
+            </div>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="box" style="height: 480px; width: 538px; background: url('{% static 'logos/pl.png' %}') no-repeat; background-size: cover;"></div>
+
+    </div>
+</div>
+{% endblock %}

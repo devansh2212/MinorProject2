@@ -1,0 +1,14 @@
+{% extends "minorproject/base.html" %}
+{% block content %}
+    
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class=" mt-5 text-center">You have been logged out</h1>
+                <div class=" mt-5 text-center">
+                    <small class="text-muted">
+                        <a href="{% url 'minor-home' %}" class="text-center">Go To Home</a>
+                    </small>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
