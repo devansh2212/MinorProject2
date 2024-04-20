@@ -70,3 +70,9 @@ def dashboard(request,user):
             return render(request,"patient/dashboard.html")
     else:
         return HttpResponse("Error 404!")
+    
+def logins(request):
+    return render(request,'minorproject/logins.html')
+
+def search(request):
+    return render(request,'minorproject/search.html')

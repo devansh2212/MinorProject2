@@ -18,11 +18,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+      .avatar {
+        height: 40px;
+        width: 40px;
+    }
+    .container-fluid a{
+      color:black;
+    }
+    </style>
 </head>
 <body>
   <div class="background">
-    <section class="header">
-        <nav class="navbar navbar-expand-lg bg-dark">
+        <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <!-- <a class="navbar-brand" href="#">Navbar</a> -->
               <a id="special" href="#"> <img src="{% static 'minorproject/logos/new (1).png' %}" id="logo" alt=""> </a>
@@ -40,41 +48,42 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
                   </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Insights</a>
+                  </li>
                 </ul>
-                <ul class="ml-auto">
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                {% block extra_nav %}
+                {% endblock %}
+                <ul class="ml-auto mr-12">
+                  <form class="d-flex" method="POST" action="{% url 'search-home' %}">
+                    {%csrf_token%}
+                    <button class="btn btn-outline-success" type="submit">MedicineSearch</button>
                   </form>
                 </ul>
+               
                 <ul class="navbar-nav ml-auto">
                   {% if user.is_authenticated %}
-                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fas fa-user mx-1"></i> Profile
-                          </a>
-                          <!-- Dropdown menu -->
-                          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                              <li>
-                                  <a class="dropdown-item" href="{% url 'profile' user=user %}?key={{ key }}" style="color:blue">My account</a>
-                              </li>
-                              <li>
-                                  <a class="dropdown-item" href="{% url 'dashboard' user=user %}?key={{ key }}" style="color:blue">Dashboard</a>
-                              </li>
-                              <li class="nav-item mr-3">
-                                <form method="POST" action="{% url 'logout' %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="dropdown-item" style="color:blue">Logout</button>
-                                </form>
-                              </li>
-                          </ul>
-                      </li>
+                  <li class="nav-item dropdown">
+                    <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                        <img src="{%static 'minorproject/logos/drl.png'%}" class="avatar img-fluid rounded" alt="">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a href={% url 'profile' user=user %}?key={{ key }} class="dropdown-item">Profile</a>
+                        <a href={% url 'dashboard' user=user %}?key={{ key }} class="dropdown-item">Dashboard</a>
+                        <form method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="dropdown-item">Logout</button>
+                        </form>
+                    </div>
+                </li>
                   {% endif %}
                 </ul>
               </div>
             </div>
           </nav>
-    </section>
+    
     {% block content %}{% endblock %}
+
 </body>
 </html>
