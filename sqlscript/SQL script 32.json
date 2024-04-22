@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 32",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW data.payer_transitions1\nAS\nSELECT *\nFROM data.payer_transitions;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

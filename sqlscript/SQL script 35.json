@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 35",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW data.providers1\nAS\nSELECT *\nFROM data.providers;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

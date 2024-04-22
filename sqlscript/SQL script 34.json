@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 34",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW data.procedures1\nAS\nSELECT *\nFROM data.procedures;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
