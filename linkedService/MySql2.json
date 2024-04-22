@@ -1,0 +1,16 @@
+{
+	"name": "MySql2",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MySql",
+		"typeProperties": {
+			"connectionString": "server=localhost;port=3306;database=hospital2;user=root;sslmode=1;usesystemtruststore=0",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiYzc1YWM5OS1jY2FhLTQ1OTgtODdiMC1hM2IxMmVjMDg3ZjAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "HOSPITAL2",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
