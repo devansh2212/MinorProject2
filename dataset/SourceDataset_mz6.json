@@ -1,0 +1,15 @@
+{
+	"name": "SourceDataset_mz6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`ap001`"
+		}
+	}
+}
