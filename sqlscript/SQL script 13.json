@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 13",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseDelimitedTextFormat') \n\tCREATE EXTERNAL FILE FORMAT [SynapseDelimitedTextFormat] \n\tWITH ( FORMAT_TYPE = DELIMITEDTEXT ,\n\t       FORMAT_OPTIONS (\n\t\t\t FIELD_TERMINATOR = ',',\n\t\t\t FIRST_ROW = 2,\n\t\t\t USE_TYPE_DEFAULT = FALSE\n\t\t\t))\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'healthdata_minorstore_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [healthdata_minorstore_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://healthdata@minorstore.dfs.core.windows.net' \n\t)\nGO\n\nCREATE EXTERNAL TABLE data.organizations (\n\t[Id] uniqueidentifier,\n\t[NAME] nvarchar(4000),\n\t[ADDRESS] nvarchar(4000),\n\t[CITY] nvarchar(4000),\n\t[STATE] nvarchar(4000),\n\t[ZIP] nvarchar(4000),\n\t[LAT] float,\n\t[LON] float,\n\t[PHONE] nvarchar(4000),\n\t[REVENUE] float,\n\t[UTILIZATION] bigint\n\t)\n\tWITH (\n\tLOCATION = 'organizations.csv',\n\tDATA_SOURCE = [healthdata_minorstore_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseDelimitedTextFormat]\n\t)\nGO\n\n\nSELECT TOP 100 * FROM data.organizations\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
