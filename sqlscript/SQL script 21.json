@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 21",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW data.conditions1\nAS\nSELECT *\nFROM data.conditions;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

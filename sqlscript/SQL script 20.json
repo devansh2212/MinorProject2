@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 20",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW data.careplans1\nAS\nSELECT *\nFROM data.careplans;\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

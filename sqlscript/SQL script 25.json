@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 25",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW data.imaging_studies1\nAS\nSELECT *\nFROM data.imaging_studies;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
