@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 14",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP 100 * FROM data.payer_transitions\nGo",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "MINOR_WORK",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
