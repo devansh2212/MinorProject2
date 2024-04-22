@@ -1,0 +1,15 @@
+{
+	"name": "SourceDataset_tnv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`prediction_results`"
+		}
+	}
+}
