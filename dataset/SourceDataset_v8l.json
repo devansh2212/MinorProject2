@@ -1,0 +1,23 @@
+{
+	"name": "SourceDataset_v8l",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MySql1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_tableName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": {
+				"value": "@dataset().cw_tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
