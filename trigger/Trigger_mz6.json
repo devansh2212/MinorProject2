@@ -1,0 +1,24 @@
+{
+	"name": "Trigger_mz6",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CopyPipeline_mz6",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2024-04-22T05:56:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
